@@ -15,8 +15,8 @@ connectToMongoDB();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// import routes from './api/routes';
-// app.use(routes)
+import routes from './api/routes';
+app.use(routes)
 
 const port = process.env.APP_PORT || 3100
 app.listen(port, (): void => console.log(`App is running at port:${port}!`))
