@@ -25,3 +25,4 @@ export const schoolTypesEnum: string[] = [PRIMARY, MIDDLE, SECONDARY];
 export const M: string = "M";
 export const F: string = "F";
 export const sexTypesEnum: string[] = [M, F];
+

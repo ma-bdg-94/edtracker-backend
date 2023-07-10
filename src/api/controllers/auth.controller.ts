@@ -46,6 +46,7 @@ export default class AuthController {
       const payload: any = {
         user: {
           id: user.id,
+          type: user.userType
         },
       };
 
@@ -89,6 +90,7 @@ export default class AuthController {
       const payload: any = {
         user: {
           id: user.id,
+          type: user.userType
         },
       };
       const token = await signToken(payload);

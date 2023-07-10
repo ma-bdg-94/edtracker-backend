@@ -4,6 +4,7 @@ import { sexTypesEnum, userTypesEnum } from '../utilities/constants/types'
 import deletePlugin from 'mongoose-delete'
 
 interface UserInterface {
+  association: Schema.Types.ObjectId | null
   firstName: Object
   lastName: Object
   sex: string
@@ -19,6 +20,9 @@ const rounds = parseInt(process.env.BCRYPTJS_ROUNDS!)
 
 const UserSchema = new Schema<UserInterface>(
   {
+    association: {
+      type: Schema.Types.Mixed
+    },
     firstName: {
       ar: {
         type: String,

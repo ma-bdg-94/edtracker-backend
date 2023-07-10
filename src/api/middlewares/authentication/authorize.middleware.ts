@@ -1,9 +1,10 @@
 import { Request, Response, NextFunction } from 'express';
 import { FORBIDDEN, UNAUTHORIZED } from 'http-status';
 import { verify } from 'jsonwebtoken';
+import { User } from '../../models';
 
 interface DecodedToken {
-  user: string;
+  user: any;
   type: string;
   iat: number;
   exp: number;
@@ -24,7 +25,8 @@ export default function authorize(userTypes?: string | string[]) {
       
       if (userTypes) {
         const requiredTypes = Array.isArray(userTypes) ? userTypes : [userTypes];
-        if (!requiredTypes.includes(decryptedToken.type)) {
+        if (!requiredTypes.includes(decryptedToken.user.type)) {
+          console.log({requiredTypes, decryptedToken})
           return res
             .status(FORBIDDEN)
             .json({ msg: 'Unauthorized! Access denied' });
